@@ -2,6 +2,4 @@
 
 a to-do list making application.
 
-I created this using Ruby on Rails.
-This is my first app without a guide.
-I'll continue to work on this as an ongoing project as I continue to study further.
+Ongoing project created using Ruby on Rails.
