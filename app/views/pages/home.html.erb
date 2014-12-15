@@ -1,0 +1,66 @@
+<div class = "nav">
+<ul id = "navbar">
+  <li class = "left" >todo.</li>
+  <li class = "right" >Welcome to todo, a to-do list making app.</li>
+</ul>
+</div>
+
+
+<div class = "jumbotron entry">
+  <%= form_for :task, url: tasks_path do |t| %>
+    <div class="form-group">
+      <%= t.label :task %>
+      <%= t.text_field :title, :class => "form-control" %>
+      <%= t.label :note %>
+      <%= t.text_area :note, :class => "form-control" %>
+      <%= t.submit :class => "btn click" %>
+    </div>
+    
+      
+  <% end %>
+</div>
+<div class = "jumbotron listing">
+
+    <% if @tasks.empty? %>
+      <p> There are no tasks! </p>
+    <% else %>
+      <table>
+        <tr>
+          <th>Task</th>
+          <th>Notes</th>
+          <th class = "donebtn" >Done?</th>
+        </tr>
+      <% @tasks.each do |t| %>
+        <% if t.done == false %>
+        <tr>
+          <td class = "tasknote"><%= t.title %></td>
+          <td class = "tasknote"><%= t.note %></td>
+          <td class = "donebtn">
+            <%= link_to "Done", complete_tasks_path(:id => t.id), class: "link" %>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+      </table>
+    <% end %>
+</div>
+<div class = "jumbotron donetasks">
+  <table>
+    <tr>
+      <th>Task</th>
+      <th>Notes</th>
+      <th>Completed</th>
+    </tr>
+  <% @tasks.each do |t| %>
+    <% if t.done && t.completed %>
+    <tr>
+      <td class = "donenote"><%= t.title %></td>
+      <td class = "donenote"><%= t.note %></td>
+      <td class = "timedone"><%= t.completed.strftime("%B %d, %Y at %I:%M:%S")  %></td>
+    </tr>
+    <% end %>
+  <% end %>
+  </table>
+
+</div>
+
