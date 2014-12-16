@@ -4,8 +4,6 @@ class TasksController < ApplicationController
   
   def create
     @task = Task.new(task_params)
-    @task.done = 0
- 
     @task.save
     redirect_to root_path
   end
@@ -15,7 +13,7 @@ class TasksController < ApplicationController
   
   def complete
     @task = Task.find(params[:id])
-    @task.done = 1
+    @task.done = true
     @task.completed = Time.now
     @task.save!
     redirect_to root_path
