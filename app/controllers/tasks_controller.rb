@@ -22,11 +22,7 @@ class TasksController < ApplicationController
   def update
     redirect_to root_path
   end
-#working on a way to distinguish if there are any pending tasks
-  def pending
-    @task = Task.find_by :done => 'false'
-  end
-  
+
 private
   def task_params
     params.require(:task).permit(:title, :note)

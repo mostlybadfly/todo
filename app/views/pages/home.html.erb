@@ -15,35 +15,34 @@
       <%= t.text_area :note, :class => "form-control" %>
       <%= t.submit :class => "btn click" %>
     </div>
-    
-      
   <% end %>
 </div>
-<div class = "jumbotron listing">
 
-    <% if @tasks.empty? %>
-      <p> there are no tasks! </p>
-    <% else %>
+<div class = "jumbotron listing">
+    <% if @tasks.pending? %>
       <table>
         <tr>
           <th>Task</th>
           <th>Notes</th>
           <th class = "donebtn" >Done?</th>
         </tr>
-      <% @tasks.each do |t| %>
-        <% if t.done == false %>
-        <tr>
-          <td class = "tasknote"><%= t.title %></td>
-          <td class = "tasknote"><%= t.note %></td>
-          <td class = "donebtn">
-            <%= link_to "Done", complete_tasks_path(:id => t.id), class: "link" %>
-          </td>
-        </tr>
+        <% @tasks.each do |t| %>
+            <% if t.done == false %>
+                <tr>
+                  <td class = "tasknote"><%= t.title %></td>
+                  <td class = "tasknote"><%= t.note %></td>
+                  <td class = "donebtn">
+                    <%= link_to "Done", complete_tasks_path(:id => t.id), class: "link" %>
+                  </td>
+                </tr>
+            <% end %>
         <% end %>
-      <% end %>
       </table>
+    <% else %>
+      <p> There are no pending tasks! </p>
     <% end %>
 </div>
+
 <div class = "jumbotron donetasks">
   <table>
     <tr>
@@ -63,4 +62,3 @@
   </table>
 
 </div>
-

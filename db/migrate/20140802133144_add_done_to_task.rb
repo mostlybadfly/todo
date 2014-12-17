@@ -1,5 +1,5 @@
 class AddDoneToTask < ActiveRecord::Migration
   def change
-    change_column_default(:tasks, :done, false)
+    add_column(:tasks, :done, :boolean)
   end
 end

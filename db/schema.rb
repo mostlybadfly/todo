@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20141216185007) do
     t.datetime "completed"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "done"
+    t.boolean  "done",       default: false
   end
 
 end
