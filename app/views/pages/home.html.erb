@@ -55,7 +55,7 @@
     <tr>
       <td class = "donenote"><%= t.title %></td>
       <td class = "donenote"><%= t.note %></td>
-      <td class = "timedone"><%= t.completed.strftime("%B %d, %Y at %I:%M:%S")  %></td>
+      <td class = "timedone"><%= t.completed.strftime("%D at %T")  %></td>
     </tr>
     <% end %>
   <% end %>
